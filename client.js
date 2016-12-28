@@ -1,10 +1,10 @@
 const net = require('net');
 
-
+var users = {};
 
 // allows user to type in data and sent to server
 const client = net.connect({port: 6969}, () => {
-  console.log('connected to server');
+ console.log('CONNECTED TO SERVER:\n ' + 'enter userName:\n');
   process.stdin.on('data', (data) => {
     client.write(data.toString());
   });
