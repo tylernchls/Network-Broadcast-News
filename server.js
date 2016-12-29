@@ -20,7 +20,6 @@ var server = net.createServer((socket) => {
   */
 
   socket.on('data', (data) => {
-      console.log(data.toString());
     if(socket.userName == undefined) {
       socket.userName = data.toString().trim();
       console.log(socket.userName + ' has joined that chat');
@@ -64,9 +63,9 @@ var server = net.createServer((socket) => {
 
 
 // gives server ability to write admin message to all connected sockets
-process.stdin.on('data', (data) => {
+process.stdin.on('data', (message) => {
   for(var i = 0; i < clients.length; i++) {
-    clients[i].write('Admin: ' + data.toString());
+    clients[i].write('Admin: ' + message.toString());
 
   }
 
